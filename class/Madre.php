@@ -1,24 +1,14 @@
 <?php
+require_once "class/Vacuno.php";
 
-
-class madre {
-    private $caravana;
-    
-    public function __construct($caravana) {
-        $this->caravana = $caravana;
+class Madre extends Vacuno{
         
+    public function __construct(int $caravana) {
+        
+        parent::__construct($caravana);
     }
+    public function obtenerTipo(): string {
+        return "Madre";
+}   
+} 
 
-    public function getCaravana() {
-        return $this->caravana;
-    }
-
-    public function setCaravana($caravana) {
-        $this->caravana = $caravana;
-    }    
-
-    public function mostrarCaravana() {
-        echo "Caravana: " . $this->getCaravana() . "<br>";
-    }
-
-}    
