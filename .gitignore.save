@@ -1,0 +1,17 @@
+# Ignorar los archivos de configuración de VSCode
+.vscode/
+
+# Ignorar archivos temporales
+*.log
+*.tmp
+
+# Ignorar la carpeta de node_modules si usas Node.js
+node_modules/
+
+# Ignorar directorios generados por sistemas operativos
+.DS_Store
+Thumbs.db
+
+# Ignorar otros archivos generados
+*.bak
+*.swp
