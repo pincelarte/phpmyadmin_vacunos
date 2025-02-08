@@ -20,19 +20,19 @@ class Repository {
             $caravana = $objeto->getCaravana();
             
             if (!is_int($caravana) || $caravana <= 0) {
-                echo "La caravana no es válida.<br>";
+                echo "La caravana $caravana no es válida.";
                 return;
             }
             
             if ($this->existeCaravana($caravana)) {
-                echo "La caravana ya existe en la base de datos.<br>";
+                echo "La caravana $caravana ya existe en la base de datos." . PHP_EOL;
                 return;
             }
 
             $mensaje = guardarCaravana($caravana, $this->conection);
             
             if ($mensaje === "Caravana guardada correctamente en la base de datos.") {
-                echo $mensaje . "<br>";
+                echo $mensaje . PHP_EOL;
             } else {
                 echo "Error al guardar la caravana: " . $mensaje . "<br>";
             }
@@ -47,13 +47,13 @@ class Repository {
         if (is_array($caravanas)) {
             if (count($caravanas) > 0) {
                 foreach ($caravanas as $caravana) {
-                    echo "Caravana: $caravana <br>";
+                    echo "Caravana: $caravana" . PHP_EOL;
                 }
             } else {
-                echo "No se encontraron caravanas en la base de datos.<br>";
-            }
+                echo "No se encontraron caravanas en la base de datos." . PHP_EOL;
+                    }
         } else {
-            echo "Error al cargar las caravanas: " . $caravanas . "<br>";
+            echo "Error al cargar las caravanas: " . $caravanas . PHP_EOL;
         }
     }
 

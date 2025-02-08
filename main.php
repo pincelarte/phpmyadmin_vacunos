@@ -11,7 +11,7 @@ $repository = new Repository($conection);
 $madre = new Madre(666);  
 
 $repository->guardar($madre);
-$repository->cargar();
+
 
 
 
