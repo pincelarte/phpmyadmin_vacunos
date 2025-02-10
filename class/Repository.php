@@ -15,31 +15,27 @@ class Repository {
         }
     }
 
-    public function guardar($objeto): void {
+    public function guardar($objeto): string {  // Cambié el tipo de retorno a string para que devuelva un mensaje
         if ($objeto instanceof Vacuno) {
             $caravana = $objeto->getCaravana();
+            $tipo = $objeto->getTipo();
             
             if (!is_int($caravana) || $caravana <= 0) {
-                echo "La caravana $caravana no es válida.";
-                return;
+                return "⚠️ La caravana $caravana no es válida.\n";
             }
             
             if ($this->existeCaravana($caravana)) {
-                echo "La caravana $caravana ya existe en la base de datos." . PHP_EOL;
-                return;
+                return "⚠️ La caravana $caravana ya existe en la base de datos.\n";
             }
-
-            $mensaje = guardarCaravana($caravana, $this->conection);
-            
-            if ($mensaje === "Caravana guardada correctamente en la base de datos.") {
-                echo $mensaje . PHP_EOL;
-            } else {
-                echo "Error al guardar la caravana: " . $mensaje . "<br>";
-            }
+        
+            // Llamamos a guardarCaravana() y retornamos el mensaje
+            return guardarCaravana($caravana, $tipo, $this->conection);
         } else {
-            echo "El objeto no es una instancia de Vacuno o sus derivados.<br>";
+            return "❌ El objeto no es una instancia de Vacuno o sus derivados.\n";
         }
     }
+    
+    
 
     public function cargar(): void {
         $caravanas = cargarCaravanas($this->conection);
@@ -50,10 +46,10 @@ class Repository {
                     echo "Caravana: $caravana" . PHP_EOL;
                 }
             } else {
-                echo "No se encontraron caravanas en la base de datos." . PHP_EOL;
+                echo "No se encontraron vacunos en la base de datos." . PHP_EOL;
                     }
         } else {
-            echo "Error al cargar las caravanas: " . $caravanas . PHP_EOL;
+            echo "Error al cargar los vacunos: " . $caravanas . PHP_EOL;
         }
     }
 
